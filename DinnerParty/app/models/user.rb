@@ -1,14 +1,17 @@
-class User < ActiveRecord::Base
-  # as host
-  has_many :hosted_dinners, foreign_key: "host_id", class_name: "Dinner"
-  has_many :sent_invitations, class_name: "Invitee", through: :hosted_dinners
-  has_many :guests, through: :sent_invitees
+# == Schema Information
+#
+# Table name: users
+#
+#  id       :integer          not null, primary key
+#  name     :string
+#  uid      :string
+#  provider :string
+#
 
-  # as guest
-  has_many :invitees, foreign_key: "guest_id"
-  has_many :dish_assignments, through: :invitees
-  has_many :dinners, through: :invitees
-  has_many :hosts, through: :dinners 
+class User < ActiveRecord::Base
+  
+  has_many :guests
+  has_many :hosts
 
 def self.create_with_omniauth(auth_hash)
     create! do |user|

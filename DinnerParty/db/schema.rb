@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102194607) do
+ActiveRecord::Schema.define(version: 20151102224730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20151102194607) do
   end
 
   create_table "dish_assignments", force: :cascade do |t|
-    t.integer "invitee_id"
+    t.integer "guest_id"
     t.integer "menu_item_id"
   end
 
@@ -31,10 +31,22 @@ ActiveRecord::Schema.define(version: 20151102194607) do
     t.string "course"
   end
 
-  create_table "invitees", force: :cascade do |t|
+  create_table "guests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
     t.integer "dinner_id"
     t.integer "guest_id"
-    t.string  "status"
+    t.string  "status",    default: "pending"
   end
 
   create_table "menu_items", force: :cascade do |t|
