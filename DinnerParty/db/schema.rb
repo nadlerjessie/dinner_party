@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151102194607) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "course"
   end
 
   create_table "invitees", force: :cascade do |t|
