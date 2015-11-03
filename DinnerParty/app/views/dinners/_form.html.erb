@@ -1,0 +1,23 @@
+<%= form_for(@dinner) do |f| %>
+
+  <%= f.label :date %><br>
+  <%= f.datetime_select :date %><br>
+<h3>Guests</h3>
+
+<!--
+not sure if guests or users
+Idea is to get list of all users host can invite to party.
+So maybe if you are a user, you must also be a guest by default.  -->
+<%= f.collection_check_boxes :user_ids, User.all, :id, :name %><br>
+
+
+<!-- Then if you're inviting someone outside the system. Go here to create a new user and new guest simultaneously.. --> 
+<%= f.fields_for :guests do |guest_form| %>
+  <%= guest_form.label :name %>
+  <%= guest_form.text_field :name %>
+<% end %>
+<br>
+
+<%= f.submit %>
+
+<% end %>
