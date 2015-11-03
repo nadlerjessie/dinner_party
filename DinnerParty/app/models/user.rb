@@ -12,8 +12,8 @@
 
 class User < ActiveRecord::Base
   
-  has_many :guests
-  has_many :hosts
+  has_one :guest
+  has_one :host
 
 def self.create_with_omniauth(auth_hash)
     create! do |user|

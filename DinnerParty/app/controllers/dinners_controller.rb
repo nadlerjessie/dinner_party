@@ -15,6 +15,10 @@ class DinnersController < ApplicationController
     redirect_to @dinner
   end
 
+  def index
+    @dinners = Dinner.all
+  end
+
   def show
     @dinner = Dinner.find(params[:id])
   end
@@ -26,6 +30,6 @@ class DinnersController < ApplicationController
 
 
   def dinner_params
-    params.require(:dinner).permit(:date, :guests, :user_ids=>[])
+    params.require(:dinner).permit(:date, :title, :guests)
   end
 end

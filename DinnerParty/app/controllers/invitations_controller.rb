@@ -8,12 +8,10 @@ class InvitationsController < ApplicationController
   def create
     @dinner = Dinner.find(params[:dinner_id])
     invitation_params[:user_ids].each do |user_id|
-      @guest = Guest.find_or_create_by(user_id: user_id)
-      binding.pry
+      @guest = Guest.find_or_create_by(user_id: user_id) unless user_id.empty?
       @dinner.invitations.build(guest_id: @guest.id)
     end
     @dinner.save
-    binding.pry
     redirect_to @dinner
   end
 
