@@ -26,7 +26,13 @@ def self.create_with_omniauth(auth_hash)
   def self.find_by_provider_and_uid(auth_hash)
     User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
   end
-    
+
+  def assigned_dishes_for_dinner(dinner)
+    # TO DO
+  end
+
+  private 
+
 end
 
 

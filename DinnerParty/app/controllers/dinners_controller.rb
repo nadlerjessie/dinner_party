@@ -5,17 +5,29 @@ class DinnersController < ApplicationController
     @user = User.all  
   end
 
-  def index
-  end
-
   def create
-    raise
+    @dinner = Dinner.new(dinner_params)
+      if @dinner.save
+
+      else
+
+      end
   end
 
   def show 
+    @dinner = Dinner.find(params[:id])
+    binding.pry
+  end
+
+  def edit
+
+  end
+
+  def index
   end
 
   def dinner_params
     params.require(:dinner).permit(:date, :guests, :user_ids=>[])
   end
 end
+
