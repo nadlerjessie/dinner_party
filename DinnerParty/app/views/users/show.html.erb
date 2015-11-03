@@ -2,11 +2,10 @@
   User Name: <%= @user.name %>
 </h1>
 
-<h2>
-  Dinners you are attending:
+<h2>Dinners you are attending:</h2>
   <ol>
-    <% @user.guests.each do |guest| %>
-      <% guest.invitations.each do |invitation| %>
+    <% if @user.guest %>
+      <% @user.guest.invitations.each do |invitation| %>
         <li>Date: <%= invitation.dinner.date %><br>
             Title: <%= invitation.dinner.title %><br>
             Your Dishes: 
@@ -14,13 +13,11 @@
       <% end %>
     <% end %>
   </ol>
-</h2>
 
-<h2>
-  Dinners you are hosting:
+<h2>Dinners you are hosting:</h2>
   <ol>
-    <% @user.hosts.each do |host| %>
-      <% host.dinners.each do |dinner| %>
+    <% if @user.host %>
+      <% @user.host.dinners.each do |dinner| %>
         <li>Date: <%= dinner.date %><br>
             Title: <%= dinner.title %><br>
             Your Dishes: <%= @user.assigned_dishes_for_dinner(dinner) %>
@@ -28,6 +25,4 @@
       <% end %>
     <% end %>
   </ol>
-</h2>
 
-<h3>
