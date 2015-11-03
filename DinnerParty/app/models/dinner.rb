@@ -5,6 +5,7 @@
 #  id      :integer          not null, primary key
 #  date    :datetime
 #  host_id :integer
+#  title   :string
 #
 
 class Dinner < ActiveRecord::Base
@@ -15,4 +16,10 @@ class Dinner < ActiveRecord::Base
   has_many :dish_assignments, through: :menu_items
 
   # upon creation, invite self(host) and mark attending, create guest
+  def user_ids=(user_ids)
+  end
+
+  def user_ids
+  end
+
 end
