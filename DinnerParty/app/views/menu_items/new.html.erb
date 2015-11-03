@@ -1,15 +1,39 @@
 <h1>Choose your menu!</h1>
 <%= form_for [@dinner, @menu_item] do |f| %>
   <ul>
-    <% @dishes.each do |dish| %>
+  <h2>Main Dishes</h2>
+    <% @main_dishes.each do |main_dish| %>
       <li>
-      <input type="checkbox" name="menu_item[dish_ids][]" value="<%= dish.id%>"> 
-      <%= f.label dish.name %></li>
+      <input type="checkbox" name="menu_item[dish_ids][]" value="<%= main_dish.id%>"> 
+      <%= f.label main_dish.name %></li>
     <% end %>
   </ul>
-  <p>
-  <%= f.label :other %>
-  <%= f.text_field :other %> 
-  <p>
+
+  <ul>
+  <h2>Salads</h2>
+    <% @salads.each do |salad| %>
+      <li>
+      <input type="checkbox" name="menu_item[dish_ids][]" value="<%= salad.id%>"> 
+      <%= f.label salad.name %></li>
+    <% end %>
+  </ul>
+
+  <ul>
+  <h2>Appetizers</h2>
+    <% @appetizers.each do |appetizer| %>
+      <li>
+      <input type="checkbox" name="menu_item[dish_ids][]" value="<%= appetizer.id%>"> 
+      <%= f.label appetizer.name %></li>
+    <% end %>
+  </ul>
+
+  <ul>
+  <h2>Desserts</h2>
+    <% @desserts.each do |dessert| %>
+      <li>
+      <input type="checkbox" name="menu_item[dish_ids][]" value="<%= dessert.id%>"> 
+      <%= f.label dessert.name %></li>
+    <% end %>
+  </ul>
   <%= f.submit "Create Menu"%>
 <% end %>

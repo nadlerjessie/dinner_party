@@ -12,8 +12,4 @@ class MenuItem < ActiveRecord::Base
   belongs_to :dinner
   has_many :dish_assignments
 
-
-  def other
-  end
-
 end

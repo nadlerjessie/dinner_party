@@ -1,36 +1,44 @@
 <h1>Your Menu</h1>
 <p>
+<% if @main_dishes.any? %>
 <h3>Main Dishes</h3>
 <ul>
-<% @main_dishes.each do |main_dish| %>
-  <li><%= main_dish.name %></li>
+  <% @main_dishes.each do |main_dish| %>
+    <li><%= main_dish.name %></li>
+  <% end %>
 <% end %>
 </ul>
 </p>
 
 <p>
+<% if @salads.any? %>
 <h3>Salads</h3>
 <ul>
-<% @salads.each do |salad| %>
-  <li><%= salad.name %></li>
+  <% @salads.each do |salad| %>
+    <li><%= salad.name %></li>
+  <% end %>
 <% end %>
 </ul>
 </p>
 
 <p>
+<% if @appetizers.any? %>
 <h3>Appetizers</h3>
 <ul>
-<% @appetizers.each do |appetizer| %>
-  <li><%= appetizer.name %></li>
+  <% @appetizers.each do |appetizer| %>
+    <li><%= appetizer.name %></li>
+  <% end %>
 <% end %>
 </ul>
 </p>
 
 <p>
+<% if @desserts.any? %>
 <h3>Desserts</h3>
 <ul>
-<% @dessert.each do |dessert| %>
-  <li><%= dessert.name %></li>
+  <% @dessert.each do |dessert| %>
+    <li><%= dessert.name %></li>
+  <% end %>
 <% end %>
 </ul>
 </p>
