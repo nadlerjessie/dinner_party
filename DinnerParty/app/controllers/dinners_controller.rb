@@ -19,14 +19,13 @@ class DinnersController < ApplicationController
     @dinner = Dinner.find(params[:id])
   end
 
-
   def destroy
     @dinner = Dinner.find(params[:id])
     @dinner.destroy 
   end
 
-  def dinner_params
-    params.require(:dinner).permit(:title, :date)
-  end
 
+  def dinner_params
+    params.require(:dinner).permit(:date, :guests, :user_ids=>[])
+  end
 end

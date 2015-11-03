@@ -5,6 +5,7 @@
 #  id      :integer          not null, primary key
 #  date    :datetime
 #  host_id :integer
+#  title   :string
 #
 
 class Dinner < ActiveRecord::Base
@@ -16,5 +17,4 @@ class Dinner < ActiveRecord::Base
 
   # upon creation, invite self(host) and mark attending, create guest
 
-  
 end
