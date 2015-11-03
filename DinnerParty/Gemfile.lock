@@ -55,6 +55,9 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
+    erd (0.3.2)
+      nokogiri
+      rails-erd (>= 0.4.5)
     erubis (2.7.0)
     execjs (2.6.0)
     faraday (0.9.2)
@@ -184,6 +187,7 @@ DEPENDENCIES
   annotate
   byebug
   coffee-rails (~> 4.1.0)
+  erd
   figaro (~> 1.1.1)
   jbuilder (~> 2.0)
   jquery-rails

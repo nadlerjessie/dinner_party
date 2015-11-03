@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_one :guest
   has_one :host
 
-def self.create_with_omniauth(auth_hash)
+  def self.create_with_omniauth(auth_hash)
     create! do |user|
       user.provider = auth_hash["provider"]
       user.uid = auth_hash["uid"]
@@ -26,7 +26,13 @@ def self.create_with_omniauth(auth_hash)
   def self.find_by_provider_and_uid(auth_hash)
     User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
   end
-    
+
+  def assigned_dishes_for_dinner(dinner)
+    # TO DO
+  end
+
+  private 
+
 end
 
 

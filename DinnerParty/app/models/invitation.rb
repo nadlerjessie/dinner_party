@@ -12,7 +12,6 @@ class Invitation < ActiveRecord::Base
   belongs_to :dinner
   belongs_to :guest
 
-
   def user_ids
   end
 

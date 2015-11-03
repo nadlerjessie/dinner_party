@@ -28,8 +28,10 @@ class DinnersController < ApplicationController
     @dinner.destroy 
   end
 
+private
 
   def dinner_params
     params.require(:dinner).permit(:date, :title, :guests)
   end
 end
+

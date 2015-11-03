@@ -1,0 +1,33 @@
+<h1>
+  User Name: <%= @user.name %>
+</h1>
+
+<h2>
+  Dinners you are attending:
+  <ol>
+    <% @user.guests.each do |guest| %>
+      <% guest.invitations.each do |invitation| %>
+        <li>Date: <%= invitation.dinner.date %><br>
+            Title: <%= invitation.dinner.title %><br>
+            Your Dishes: 
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+</h2>
+
+<h2>
+  Dinners you are hosting:
+  <ol>
+    <% @user.hosts.each do |host| %>
+      <% host.dinners.each do |dinner| %>
+        <li>Date: <%= dinner.date %><br>
+            Title: <%= dinner.title %><br>
+            Your Dishes: <%= @user.assigned_dishes_for_dinner(dinner) %>
+        </li> 
+      <% end %>
+    <% end %>
+  </ol>
+</h2>
+
+<h3>
