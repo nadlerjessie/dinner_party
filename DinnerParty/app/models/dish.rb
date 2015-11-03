@@ -5,7 +5,8 @@
 #  id     :integer          not null, primary key
 #  name   :string
 #  course :string
-#
+
+
 
 class Dish < ActiveRecord::Base
   has_many :menu_items

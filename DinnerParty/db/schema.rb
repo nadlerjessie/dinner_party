@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20151102224730) do
   end
 
   create_table "dish_assignments", force: :cascade do |t|
-    t.integer "guest_id"
+    t.integer "invitee_id"
     t.integer "menu_item_id"
   end
 
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20151102224730) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "invitees", force: :cascade do |t|
     t.integer "dinner_id"
     t.integer "guest_id"
-    t.string  "status",    default: "pending"
+    t.string  "status"
   end
 
   create_table "menu_items", force: :cascade do |t|
