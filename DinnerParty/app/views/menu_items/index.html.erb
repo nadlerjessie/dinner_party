@@ -8,7 +8,7 @@
         <% dish_type.each do |type| %>
           <li>
             <%= type.dish.name %>
-            <%= link_to "Remove Item", "/dinners/#{params[:dinner_id]}/menu_items/#{type.id}", method: :delete%>
+            <%= link_to "Remove Item", "/dinners/#{params[:dinner_id]}/menu_items/#{type.id}", method: :delete %>
           </li>
         <% end %>
     <% end %>

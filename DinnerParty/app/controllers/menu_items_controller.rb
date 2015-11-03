@@ -14,17 +14,20 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    menu_items_params[:dish_ids].each do |dish_id|
-      MenuItem.create(dish_id: dish_id, dinner_id: @dinner.id)
+    if params[:menu_item]
+      params[:menu_item][:dish_ids].each do |dish_id|
+        MenuItem.create(dish_id: dish_id, dinner_id: @dinner.id)
+      end
     end
     redirect_to dinner_menu_items_path
   end
 
   def index
-    main_dishes = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Main Dish"})
-    salads = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Salad"})
-    appetizers = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Appetizer"})
-    desserts = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Dessert"})
+    main_dishes = MenuItem.joins(:dish).where(dinner_id: @dinner.id, dishes: {course: "Main Dish"})
+    salads = MenuItem.joins(:dish).where(dinner_id: @dinner.id, dishes: {course: "Salad"})
+    appetizers = MenuItem.joins(:dish).where(dinner_id: @dinner.id, dishes: {course: "Appetizer"})
+    desserts = MenuItem.joins(:dish).where(dinner_id: @dinner.id, dishes: {course: "Dessert"})
+
     @all_dishes = [main_dishes, salads, appetizers, desserts]
   end
 
@@ -41,8 +44,8 @@ class MenuItemsController < ApplicationController
     @dinner = Dinner.find(params[:dinner_id])
   end
 
-  def menu_items_params
-    params.require(:menu_item)
-  end
+  # def menu_items_params
+  #   params.require(:menu_item)
+  # end
 
 end
