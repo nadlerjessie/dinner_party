@@ -17,11 +17,11 @@ end
 
 
 def make_hosts
-  Host.create(user_id: 1)
+  Host.create(user_id: User.all.first.id)
 end
 
 def make_dinners
-  Dinner.create(date: Date.parse("November 2, 2015"), host_id: 1)
+  Dinner.create(date: Date.parse("November 2, 2015"), host_id: Host.all.first.id)
 end
 
 def make_dishes

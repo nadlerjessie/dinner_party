@@ -1,15 +1,15 @@
 class MenuItemsController < ApplicationController
   def new
     @menu_item = MenuItem.new
-    @main_dishes = Dish.where(course: "Main Dish")
-    @salads = Dish.where(course: "Salad")
-    @appetizers = Dish.where(course: "Appetizer")
-    @desserts = Dish.where(course: "Dessert")
+    main_dishes = Dish.where(course: "Main Dish")
+    salads = Dish.where(course: "Salad")
+    appetizers = Dish.where(course: "Appetizer")
+    desserts = Dish.where(course: "Dessert")
+    @all_dishes = [main_dishes, salads, appetizers, desserts]
     @dinner = Dinner.find(params[:dinner_id])
   end
 
   def create
-    binding.pry
     if menu_items_params[:other]
       Dish.create(name: menu_items_params[:other], course: "user added")
     end
@@ -18,13 +18,14 @@ class MenuItemsController < ApplicationController
     menu_items_params[:dish_ids].each do |dish_id|
       MenuItem.create(dish_id: dish_id, dinner_id: dinner_id)
     end
+    redirect_to dinner_menu_items_path
   end
 
   def index
-    # @main_dishes = MenuItem.where(dinner_id: params[:dinner_id], dish.course: "Main Dish")
-    # @salads = MenuItem.where(dinner_id: params[:dinner_id], dish.course: "Salad")
-    # @appetizers = MenuItem.where(dinner_id: params[:dinner_id], dish.course: "Appetizer")
-    # @desserts = MenuItem.where(dinner_id: params[:dinner_id], dish.course: "Dessert")
+    @main_dishes = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Main Dish"})
+    @salads = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Salad"})
+    @appetizers = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Appetizer"})
+    @desserts = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Dessert"})
   end
 
   # def edit

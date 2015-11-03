@@ -4,7 +4,7 @@
 <h3>Main Dishes</h3>
 <ul>
   <% @main_dishes.each do |main_dish| %>
-    <li><%= main_dish.name %></li>
+    <li><%= main_dish.dish.name %></li>
   <% end %>
 <% end %>
 </ul>
@@ -15,7 +15,7 @@
 <h3>Salads</h3>
 <ul>
   <% @salads.each do |salad| %>
-    <li><%= salad.name %></li>
+    <li><%= salad.dish.name %></li>
   <% end %>
 <% end %>
 </ul>
@@ -26,7 +26,7 @@
 <h3>Appetizers</h3>
 <ul>
   <% @appetizers.each do |appetizer| %>
-    <li><%= appetizer.name %></li>
+    <li><%= appetizer.dish.name %></li>
   <% end %>
 <% end %>
 </ul>
@@ -36,8 +36,8 @@
 <% if @desserts.any? %>
 <h3>Desserts</h3>
 <ul>
-  <% @dessert.each do |dessert| %>
-    <li><%= dessert.name %></li>
+  <% @desserts.each do |dessert| %>
+    <li><%= dessert.dish.name %></li>
   <% end %>
 <% end %>
 </ul>
