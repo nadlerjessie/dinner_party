@@ -12,4 +12,12 @@ class MenuItem < ActiveRecord::Base
   belongs_to :dinner
   has_many :dish_assignments
 
+  def self.existing_menu_ids(dinner_id)
+    existing_menu_items = self.where(dinner_id: dinner_id)
+    if existing_menu_items
+      menu_ids = existing_menu_items.map(&:dish).map(&:id)
+    end
+    menu_ids
+  end
+
 end

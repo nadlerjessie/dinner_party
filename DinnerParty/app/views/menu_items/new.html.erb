@@ -1,15 +1,21 @@
-<h1>Add Items to your menu!</h1>
+<% if @menu_ids.blank? %>
+  <h1>Choose your menu!</h1>
+<% else %>
+  <h1>Add Items to Your Menu!</h1>
+<% end %>
 <%= form_for [@dinner, @menu_item] do |f| %>
   <ul>
   <% @all_dishes.each do |dish_type| %>
-    <h2><%= dish_type.first.course %></h2>
-      <% dish_type.each do |type| %>
-        <li>
-        <input type="checkbox" name="menu_item[dish_ids][]" value="<%= type.id%>"> 
-        <%= f.label type.name %></li>
-       <% end %>
+    <% if dish_type.any? %>
+      <h2><%= dish_type.first.course %></h2>
+        <% dish_type.each do |type| %>
+          <li>
+          <input type="checkbox" name="menu_item[dish_ids][]" value="<%= type.id%>"> 
+          <%= f.label type.name %></li>
+         <% end %>
+    <% end %>
   <% end %>
-    </ul>
+  </ul>
 
   <%= f.submit "Create Menu"%>
 <% end %>

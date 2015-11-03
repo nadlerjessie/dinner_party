@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :dinners do
-    resources :menu_items
+    resources :menu_items, except: [:edit, :update, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

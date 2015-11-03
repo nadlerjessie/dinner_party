@@ -3,20 +3,17 @@ class MenuItemsController < ApplicationController
 
   def new
     @menu_item = MenuItem.new
+    @menu_ids = MenuItem.existing_menu_ids(@dinner.id) || []
 
-    main_dishes = Dish.select("dishes.*").where(course: "Main Dish")
-    salads = Dish.select("dishes.*").where(course: "Salad")
-    appetizers = Dish.select("dishes.*").where(course: "Appetizer")
-    desserts = Dish.select("dishes.*").where(course: "Dessert")
+    main_dishes = Dish.select("dishes.*").where(course: "Main Dish").where.not(id: @menu_ids)
+    salads = Dish.select("dishes.*").where(course: "Salad").where.not(id: @menu_ids)
+    appetizers = Dish.select("dishes.*").where(course: "Appetizer").where.not(id: @menu_ids)
+    desserts = Dish.select("dishes.*").where(course: "Dessert").where.not(id: @menu_ids)
 
     @all_dishes = [main_dishes, salads, appetizers, desserts]
   end
 
   def create
-    if menu_items_params[:other]
-      Dish.create(name: menu_items_params[:other], course: "user added")
-    end
-
     menu_items_params[:dish_ids].each do |dish_id|
       MenuItem.create(dish_id: dish_id, dinner_id: @dinner.id)
     end
@@ -29,16 +26,6 @@ class MenuItemsController < ApplicationController
     appetizers = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Appetizer"})
     desserts = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Dessert"})
     @all_dishes = [main_dishes, salads, appetizers, desserts]
-  end
-
-  def edit
-
-  end
-
-  def update
-  end
-
-  def show
   end
 
   def destroy
