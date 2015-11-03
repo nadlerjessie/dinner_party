@@ -17,4 +17,10 @@ class Host < ActiveRecord::Base
   def name
     user.name
   end
+
+  def add_to_attendees(dinner)
+    @guest = Guest.find_or_create_by(user_id: self.user_id)
+    @invitation = Invitation.new(dinner_id: dinner.id, guest_id: @guest.id, status: "attending")
+    @invitation.save
+  end
 end

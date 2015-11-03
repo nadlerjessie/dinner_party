@@ -2,7 +2,11 @@
 
 <p><%= @dinner.title %></p>
 <p><%= @dinner.date %></p>
+
+
 <%= form_for ([@dinner, @invitation]) do |f| %>
   <%= f.collection_check_boxes :user_ids, User.all, :id, :name %><br><br>
   <%= f.submit "Invite Guests" %>
 <% end %>
+
+<!-- but i need to get remove the currently invited guests and self --> 

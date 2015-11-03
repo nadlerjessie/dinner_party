@@ -1,6 +1,10 @@
 <h3>Your Guests</h3>
 <ul>
 <% @dinner.guests.each do |guest| %>
-  <li><%= guest.name if guest.name %></li>
+  <li><%= guest.name if guest.name %>
+  </li>
 <% end %>
+
 </ul>
+
+<%= link_to "Invite More Friends", new_dinner_invitation_path(@dinner) %>

@@ -8,8 +8,10 @@ class InvitationsController < ApplicationController
   def create
     @dinner = Dinner.find(params[:dinner_id])
     invitation_params[:user_ids].each do |user_id|
-      @guest = Guest.find_or_create_by(user_id: user_id) unless user_id.empty?
-      @dinner.invitations.build(guest_id: @guest.id)
+      if !user_id.empty?
+        @guest = Guest.find_or_create_by(user_id: user_id)
+        @dinner.invitations.build(guest_id: @guest.id)
+      end
     end
     @dinner.save
     redirect_to @dinner
@@ -17,6 +19,13 @@ class InvitationsController < ApplicationController
 
   def index
     @dinner = Dinner.find(params[:dinner_id])
+  end
+
+  def destroy
+    @dinner = Dinner.find(params[:dinner_id])
+    @invitation = Invitation.find(params[:id])
+    @invitation.destroy
+    redirect_to dinner_invitation_path(@dinner)
   end
 
 private
