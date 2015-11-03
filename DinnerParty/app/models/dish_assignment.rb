@@ -3,9 +3,11 @@
 # Table name: dish_assignments
 #
 #  id           :integer          not null, primary key
-#  guest_id     :integer
+#  invitee_id   :integer
 #  menu_item_id :integer
 #
+
+
 
 class DishAssignment < ActiveRecord::Base
   belongs_to :guest

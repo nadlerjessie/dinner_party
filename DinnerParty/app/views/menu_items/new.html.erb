@@ -1,0 +1,11 @@
+<%= form_for [@dinner, @menu_item] do |f| %>
+  <% if @menu_ids.blank? %>
+    <h1>Choose your menu!</h1>
+    <%= render "new" %>
+    <%= f.submit "Create Menu"%>
+  <% else %>
+    <h1>Add Items to Your Menu!</h1>
+    <%= render "new" %>
+    <%= f.submit "Save Menu"%>
+  <% end %>
+<% end %>

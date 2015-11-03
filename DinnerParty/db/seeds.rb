@@ -47,9 +47,8 @@ def make_guests
   Guest.create(user_id:1)
 end
 
-
 def make_dinners
-  Dinner.create(date: Date.parse("November 2, 2015"), host_id: 1)
+  Dinner.create(date: Date.parse("November 2, 2015"), host_id: Host.all.first.id)
 end
 
 def make_dishes

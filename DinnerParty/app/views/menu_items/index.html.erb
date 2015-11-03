@@ -1,0 +1,19 @@
+<h1>Your Menu</h1>
+<%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %>
+<% @all_dishes.each do |dish_type| %>
+  <ul>
+    <p>
+    <% if dish_type.any? %>
+      <h2><%= dish_type.first.dish.course %></h2>
+        <% dish_type.each do |type| %>
+          <li>
+            <%= type.dish.name %>
+            <%= link_to "Remove Item", "/dinners/#{params[:dinner_id]}/menu_items/#{type.id}", method: :delete %>
+          </li>
+        <% end %>
+    <% end %>
+    </p>
+  </ul>
+<% end %>
+
+

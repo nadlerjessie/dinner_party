@@ -1,0 +1,12 @@
+<ul>
+<% @all_dishes.each do |dish_type| %>
+  <% if dish_type.any? %>
+    <h2><%= dish_type.first.course %></h2>
+      <% dish_type.each do |type| %>
+        <li>
+        <input type="checkbox" name="menu_item[dish_ids][]" value="<%= type.id%>"> 
+        <%= label_tag type.name %></li>
+       <% end %>
+  <% end %>
+<% end %>
+</ul>
