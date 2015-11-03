@@ -1,0 +1,7 @@
+<h1><%= @dinner.title %></h1>
+<p><%= @dinner.date %></p>
+<p><%= @dinner.host.name if @dinner.host %></p>
+
+
+<%= link_to "Invite Guests",  new_dinner_invitation_path(@dinner) %>
+<%= link_to "View All Guests", dinner_invitations_path(@dinner) %>

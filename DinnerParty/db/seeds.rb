@@ -4,6 +4,9 @@ Host.destroy_all
 Dinner.destroy_all
 User.destroy_all
 Guest.destroy_all
+Invitation.destroy_all
+MenuItem.destroy_all
+DishAssignment.destroy_all
 
 def make_seeds
   make_dishes

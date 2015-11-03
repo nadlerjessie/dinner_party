@@ -10,6 +10,13 @@
 
 class Invitation < ActiveRecord::Base
   belongs_to :dinner
-  belongs_to :guest, class_name: "User"
+  belongs_to :guest
+
+
+  def user_ids
+  end
+
+
+
 
 end

@@ -12,4 +12,9 @@ class Guest < ActiveRecord::Base
   belongs_to :user
   has_many :invitations
   has_many :dish_assignments
+
+  def name
+    user.name
+  end
+
 end

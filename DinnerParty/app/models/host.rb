@@ -13,4 +13,8 @@ class Host < ActiveRecord::Base
   has_many :dinners
   has_many :invitations, through: :dinners
   has_many :guests, through: :invitations
+
+  def name
+    user.name
+  end
 end

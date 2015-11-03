@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   get 'auth/:facebook/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   #resources :sessions, only: [:create, :destroy]
-  resources :dinners
+  resources :dinners do
+    resources :invitations
+  end
+
+  resources :guests 
+  resources :hosts
 end
