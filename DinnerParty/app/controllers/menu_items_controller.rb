@@ -1,12 +1,15 @@
 class MenuItemsController < ApplicationController
+  before_action :set_dinner
+
   def new
     @menu_item = MenuItem.new
-    main_dishes = Dish.where(course: "Main Dish")
-    salads = Dish.where(course: "Salad")
-    appetizers = Dish.where(course: "Appetizer")
-    desserts = Dish.where(course: "Dessert")
+
+    main_dishes = Dish.select("dishes.*").where(course: "Main Dish")
+    salads = Dish.select("dishes.*").where(course: "Salad")
+    appetizers = Dish.select("dishes.*").where(course: "Appetizer")
+    desserts = Dish.select("dishes.*").where(course: "Dessert")
+
     @all_dishes = [main_dishes, salads, appetizers, desserts]
-    @dinner = Dinner.find(params[:dinner_id])
   end
 
   def create
@@ -14,34 +17,42 @@ class MenuItemsController < ApplicationController
       Dish.create(name: menu_items_params[:other], course: "user added")
     end
 
-    dinner_id = params[:dinner_id]
     menu_items_params[:dish_ids].each do |dish_id|
-      MenuItem.create(dish_id: dish_id, dinner_id: dinner_id)
+      MenuItem.create(dish_id: dish_id, dinner_id: @dinner.id)
     end
     redirect_to dinner_menu_items_path
   end
 
   def index
-    @main_dishes = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Main Dish"})
-    @salads = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Salad"})
-    @appetizers = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Appetizer"})
-    @desserts = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Dessert"})
+    main_dishes = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Main Dish"})
+    salads = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Salad"})
+    appetizers = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Appetizer"})
+    desserts = MenuItem.joins(:dish).where(dinner_id: params[:dinner_id], dishes: {course: "Dessert"})
+    @all_dishes = [main_dishes, salads, appetizers, desserts]
   end
 
-  # def edit
-  # end
+  def edit
 
-  # def update
-  # end
+  end
+
+  def update
+  end
 
   def show
   end
 
   def destroy
+    menu_item = MenuItem.find(params[:id])
+    menu_item.destroy
+    redirect_to dinner_menu_items_path
   end
 
 
   private
+
+  def set_dinner
+    @dinner = Dinner.find(params[:dinner_id])
+  end
 
   def menu_items_params
     params.require(:menu_item)

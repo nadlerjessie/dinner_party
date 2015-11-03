@@ -1,44 +1,19 @@
 <h1>Your Menu</h1>
-<p>
-<% if @main_dishes.any? %>
-<h3>Main Dishes</h3>
-<ul>
-  <% @main_dishes.each do |main_dish| %>
-    <li><%= main_dish.dish.name %></li>
-  <% end %>
+<%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %>
+<% @all_dishes.each do |dish_type| %>
+  <ul>
+    <p>
+    <% if dish_type.any? %>
+      <h2><%= dish_type.first.dish.course %></h2>
+        <% dish_type.each do |type| %>
+          <li>
+            <%= type.dish.name %>
+            <%= link_to "Remove Item", "/dinners/#{params[:dinner_id]}/menu_items/#{type.id}", method: :delete%>
+          </li>
+        <% end %>
+    <% end %>
+    </p>
+  </ul>
 <% end %>
-</ul>
-</p>
 
-<p>
-<% if @salads.any? %>
-<h3>Salads</h3>
-<ul>
-  <% @salads.each do |salad| %>
-    <li><%= salad.dish.name %></li>
-  <% end %>
-<% end %>
-</ul>
-</p>
 
-<p>
-<% if @appetizers.any? %>
-<h3>Appetizers</h3>
-<ul>
-  <% @appetizers.each do |appetizer| %>
-    <li><%= appetizer.dish.name %></li>
-  <% end %>
-<% end %>
-</ul>
-</p>
-
-<p>
-<% if @desserts.any? %>
-<h3>Desserts</h3>
-<ul>
-  <% @desserts.each do |dessert| %>
-    <li><%= dessert.dish.name %></li>
-  <% end %>
-<% end %>
-</ul>
-</p>
