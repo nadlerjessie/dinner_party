@@ -2,7 +2,7 @@
   User Name: <%= @user.name %>
 </h1>
 
-<h2>Dinners you are attending:</h2>
+<h2>Your Dinner Invitations</h2>
   <ol>
     <% if @user.guest %>
       <% @user.guest.invitations.each do |invitation| %>
@@ -14,7 +14,7 @@
     <% end %>
   </ol>
 
-<h2>Dinners you are hosting:</h2>
+<h2>Dinners You Are Hosting</h2>
   <ol>
     <% if @user.host %>
       <% @user.host.dinners.each do |dinner| %>
