@@ -17,7 +17,7 @@ class DishAssignmentsController < ApplicationController
 
     @menu_items_by_course = [main_dishes, salads, appetizers, desserts]
 
-    @dish_assignments = @dinner.current_menu_items
+    @dishes_assigned = @dinner.taken_menu_items
   end
 
   def create
