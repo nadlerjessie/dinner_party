@@ -8,7 +8,7 @@
 <h2>Guests</h2>
 <ul>
 <% @dinner.guests.each do |guest| %>
-  <li><%= guest.name %><%= " | Host" if guest.user_id == @dinner.host.user_id %></li>
+  <li><%= image_tag(guest.user.profile_picture) if guest.user.profile_picture %><%= guest.name %><%= " | Host" if guest.user_id == @dinner.host.user_id %></li>
 <% end %> 
 </ul>
 <%= link_to "Invite Guests",  new_dinner_invitation_path(@dinner) %>
