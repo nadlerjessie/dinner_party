@@ -12,8 +12,9 @@
             
             Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user.guest) %><br>
 
-            <%= link_to "Add a new dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-            <%= link_to "Edit your dishes" %> <!-- waiting for Jessie to make the route for this -->
+            <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+            <!-- 
+            <%= link_to "Modify Your Dishes", edit_dinner_dish_assignment_path(invitation.dinner, @dish_assignment)  %> -->
         </li>
       <% end %>
     <% end %>

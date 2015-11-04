@@ -37,14 +37,8 @@ class Dinner < ActiveRecord::Base
     dish_assignments_for_guest_for_dinner.map do |dish_assignment|
       dish_assignment.menu_item.dish.name
     end.join(", ")
-
-
-  end
-
-  def dish_assignments_for_guest(guest)
     
   end
 
-  # dinner -> dish_assignments -> menu_items -> dish
 
 end
