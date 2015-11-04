@@ -6,9 +6,14 @@
   <ol>
     <% if @user.guest %>
       <% @user.guest.invitations.each do |invitation| %>
-        <li>Date: <%= invitation.dinner.date %><br>
+        <li>Date: <%= invitation.dinner.formatted_date %><br>
             Title: <%= invitation.dinner.title %><br>
-            Your Dishes: 
+            Status: <%= invitation.status %><br>
+            
+            Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user.guest) %><br>
+
+            <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+            <%= link_to "Modify Your Dishes", edit_dinner_dish_assignment_path(invitation.dinner, @dish_assignment)  %>
         </li>
       <% end %>
     <% end %>
@@ -18,11 +23,14 @@
   <ol>
     <% if @user.host %>
       <% @user.host.dinners.each do |dinner| %>
-        <li>Date: <%= dinner.date %><br>
+        <li>Date: <%= dinner.formatted_date %><br>
             Title: <%= dinner.title %><br>
-            Your Dishes: <%= @user.assigned_dishes_for_dinner(dinner) %>
+            <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
+            <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
+            <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %>
         </li> 
       <% end %>
     <% end %>
   </ol>
 
+  <%= link_to "Create a New Dinner", new_dinner_path %>

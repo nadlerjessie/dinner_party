@@ -3,7 +3,7 @@
 # Table name: dish_assignments
 #
 #  id           :integer          not null, primary key
-#  invitee_id   :integer
+#  guest_id     :integer
 #  menu_item_id :integer
 #
 

@@ -14,6 +14,7 @@ class DishAssignmentsController < ApplicationController
     @assignments.each do |assignment|
       DishAssignment.create(guest_id: @guest.id, menu_item_id: assignment)
     end
+    @user = current_user
     redirect_to @user
   end
 
