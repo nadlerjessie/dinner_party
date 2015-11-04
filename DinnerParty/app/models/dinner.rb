@@ -15,7 +15,7 @@ class Dinner < ActiveRecord::Base
   has_many :menu_items, dependent: :destroy
   has_many :dish_assignments, through: :menu_items
 
-  validate_presence_of :title
+  validates_presence_of :title
 
   # upon creation, invite self(host) and mark attending, create guest
   def taken_menu_items
