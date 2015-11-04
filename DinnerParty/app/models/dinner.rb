@@ -10,10 +10,12 @@
 
 class Dinner < ActiveRecord::Base
   belongs_to :host
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   has_many :guests, through: :invitations
-  has_many :menu_items
+  has_many :menu_items, dependent: :destroy
   has_many :dish_assignments, through: :menu_items
+
+  validate_presence_of :title
 
   # upon creation, invite self(host) and mark attending, create guest
   def taken_menu_items

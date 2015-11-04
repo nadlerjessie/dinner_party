@@ -15,6 +15,16 @@ class DinnersController < ApplicationController
     redirect_to @dinner
   end
 
+  def edit
+    @dinner = Dinner.find(params[:id])
+  end
+
+  def update
+    @dinner = Dinner.find(params[:id])
+    @dinner.update(dinner_params)
+    redirect_to @dinner
+  end
+
   def index
     @dinners = Dinner.all
   end
