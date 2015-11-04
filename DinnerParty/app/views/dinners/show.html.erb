@@ -6,5 +6,9 @@
 
 
 <h2>Guests</h2>
+<ul>
+<% @dinner.guests.each do |guest| %>
+  <li><%= guest.name %><%= " | Host" if guest.user_id == @dinner.host.user_id %></li>
+<% end %> 
+</ul>
 <%= link_to "Invite Guests",  new_dinner_invitation_path(@dinner) %>
-<%= link_to "View All Guests", dinner_invitations_path(@dinner) %>
