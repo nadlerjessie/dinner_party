@@ -7,10 +7,11 @@
 #  menu_item_id :integer
 #
 
-
-
 class DishAssignment < ActiveRecord::Base
   belongs_to :guest
   belongs_to :menu_item
 
+  def self.find_items
+    self.where(guest_id: current_user.guest.id)
+  end
 end
