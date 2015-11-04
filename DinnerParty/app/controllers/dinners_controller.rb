@@ -35,7 +35,10 @@ class DinnersController < ApplicationController
 
   def destroy
     @dinner = Dinner.find(params[:id])
-    @dinner.destroy 
+    @dinner.destroy
+
+    @user = current_user
+    redirect_to @user
   end
 
 private

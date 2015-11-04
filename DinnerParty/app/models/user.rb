@@ -27,12 +27,6 @@ class User < ActiveRecord::Base
     User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
   end
 
-  def assigned_dishes_for_dinner(dinner)
-    # TO DO
-  end
-
-  private 
-
 end
 
 

@@ -22,4 +22,29 @@ class Dinner < ActiveRecord::Base
     menu_items.map {|menu_item| menu_item.id if menu_item.dish_assignment}.compact
   end
 
+  def formatted_date
+    self.date.strftime("%B %d, %Y at %l:%M%p")
+  end
+
+  def assigned_dishes_for_guest(guest)
+    dish_assignments_for_guest = DishAssignment.where(guest_id: guest.id)
+    menu_item_ids = menu_items.map(&:id)
+
+    dish_assignments_for_guest_for_dinner = dish_assignments_for_guest.select do |dish_assignment|
+      menu_item_ids.include?(dish_assignment.menu_item_id)
+    end
+
+    dish_assignments_for_guest_for_dinner.map do |dish_assignment|
+      dish_assignment.menu_item.dish.name
+    end.join(", ")
+
+
+  end
+
+  def dish_assignments_for_guest(guest)
+    
+  end
+
+  # dinner -> dish_assignments -> menu_items -> dish
+
 end
