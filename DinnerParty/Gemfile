@@ -30,7 +30,8 @@ gem 'omniauth-facebook'
 gem 'pry'
 gem 'annotate'
 gem 'launchy'
-
+gem 'httparty'
+gem 'recursive-open-struct'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
