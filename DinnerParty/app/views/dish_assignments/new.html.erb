@@ -5,7 +5,7 @@
       <h2><%= course_array.first.dish.course %></h2>
         <% course_array.each do |menu_item| %>
         <% if @dishes_assigned.include?(menu_item.id) %>
-        <li><%= menu_item.name %> -- <%= menu_item.dish_assignment.guest.name %></li>
+        <li><%= menu_item.name %> -- <%= menu_item.dish_assignment.guest.name if menu_item.dish_assignment.guest %></li>
         <% else %>  
           <li>
           <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>"> 
