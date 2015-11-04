@@ -1,19 +1,12 @@
 <%= render 'dinners/dinner_attributes' %>
-<h3>Invite Guests</h3>
 
+<h3>Invite Guests</h3>
+ 
 <% if @available_users.empty? %>
-   <%= "No more users to invite :(" %>
-  <% else %>
-  <%= form_tag dinner_invitations_path(@dinner), method: "post" do %>
-  <% @available_users.each do |user| %>
-  <p>
-    <%= check_box_tag("[invitation][user_ids][]", user.id) %>
-    <%= label_tag (:user_ids), user.name %>
-  </p>
-  <% end %>
-  <%= submit_tag("Invite Guests")%>
-<% end %> 
- <% end %>
+  <%= "No more users to invite :(" %>
+<% else %>
+  <%= render 'form' %>
+<% end %>
 
  
 <p>
