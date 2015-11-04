@@ -13,8 +13,7 @@
             Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user.guest) %><br>
 
             <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-            <!-- 
-            <%= link_to "Modify Your Dishes", edit_dinner_dish_assignment_path(invitation.dinner, @dish_assignment)  %> -->
+            <%= link_to "Modify Your Dishes", edit_dinner_dish_assignment_path(invitation.dinner, @dish_assignment)  %>
         </li>
       <% end %>
     <% end %>
@@ -28,7 +27,7 @@
             Title: <%= dinner.title %><br>
             <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
             <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
-            <%= link_to "Delete Dinner", "/dinners/#{dinner.id}", method: :delete %>
+            <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %>
         </li> 
       <% end %>
     <% end %>
