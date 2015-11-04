@@ -26,7 +26,6 @@ def make_seeds
   make_dinners
   make_invitations
   make_dish_assignments
-  make_menu_items
 end
 
 def make_users

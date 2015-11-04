@@ -12,6 +12,10 @@ class MenuItem < ActiveRecord::Base
   belongs_to :dinner
   has_many :dish_assignments
 
+  include ApplicationHelper
+
+  @@courses = ["Main Dish", "Salad", "Appetizer", "Dessert"]
+
   def self.existing_menu_ids(dinner_id)
     existing_menu_items = self.where(dinner_id: dinner_id)
     if existing_menu_items
@@ -19,5 +23,12 @@ class MenuItem < ActiveRecord::Base
     end
     menu_ids
   end
+
+  def self.index_by_course(dinner_id)
+    @@courses.map do |course| 
+      self.joins(:dish).where(dinner_id: dinner_id, dishes: {course: course})
+    end
+  end
+
 
 end
