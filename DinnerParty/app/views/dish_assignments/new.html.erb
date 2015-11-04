@@ -8,8 +8,10 @@
         <li><%= menu_item.name %> -- <%= menu_item.dish_assignment.guest.name %></li>
         <% else %>  
           <li>
-          <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>"> 
-          <%= f.label menu_item.name %></li>
+          <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>">
+          <%= f.label menu_item.name %> | 
+          Consider this recipe:
+          <%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></li>
          <% end %>
         <% end %>
     <% end %>
