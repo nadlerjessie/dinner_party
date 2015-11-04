@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
-     @user = User.find_by_provider_and_uid(auth_hash)
+    @user = User.find_by_provider_and_uid(auth_hash)
     if @user
       session[:user_id] = @user.id
     else 
