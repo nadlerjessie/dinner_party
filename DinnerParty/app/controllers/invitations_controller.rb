@@ -3,6 +3,7 @@ class InvitationsController < ApplicationController
   def new
     @invitation = Invitation.new
     @dinner = Dinner.find(params[:dinner_id])
+    @available_users = @dinner.check_guest_list_against_users
   end
 
   def create
@@ -19,13 +20,6 @@ class InvitationsController < ApplicationController
 
   def index
     @dinner = Dinner.find(params[:dinner_id])
-  end
-
-  def destroy
-    @dinner = Dinner.find(params[:dinner_id])
-    @invitation = Invitation.find(params[:id])
-    @invitation.destroy
-    redirect_to dinner_invitation_path(@dinner)
   end
 
 private

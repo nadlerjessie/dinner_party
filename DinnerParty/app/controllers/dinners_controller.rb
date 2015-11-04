@@ -2,7 +2,6 @@ class DinnersController < ApplicationController
 
   def new
     @dinner = Dinner.new
-    @users = User.all
   end
 
   def create
@@ -41,7 +40,7 @@ class DinnersController < ApplicationController
 private
 
   def dinner_params
-    params.require(:dinner).permit(:date, :title, :guests)
+    params.require(:dinner).permit(:date, :title)
   end
 end
 

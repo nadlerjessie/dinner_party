@@ -22,4 +22,10 @@ class Dinner < ActiveRecord::Base
     menu_items.map {|menu_item| menu_item.id if menu_item.dish_assignment}.compact
   end
 
+  def check_guest_list_against_users
+    users = User.all 
+    dinner_guest_user_ids = self.guests.map{|guest| guest.user_id}
+    users.reject{|user| dinner_guest_user_ids.include?(user.id)}
+  end
+
 end

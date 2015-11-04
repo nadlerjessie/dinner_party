@@ -1,3 +1,4 @@
+<%= render 'dinners/dinner_attributes' %>
 <h3>Your Guests</h3>
 <ul>
 <% @dinner.guests.each do |guest| %>
@@ -8,3 +9,4 @@
 </ul>
 
 <%= link_to "Invite More Friends", new_dinner_invitation_path(@dinner) %>
+<%= link_to "Back", @dinner %>

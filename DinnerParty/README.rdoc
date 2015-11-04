@@ -1,28 +1,41 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ALL
 
-Things you may want to cover:
+Wednesday
+Root/landing page 
+Navigation links 
+Clean up code! Refactor like it’s yesterday 
+Clean up extraneous routes 
 
-* Ruby version
+Dan:
+PRIORITY UNO: Fix dashboard (user#show view)
+AS HOST
+need links & reformat dates 
+manage/edit menu 
+manage/edit/destroy dinner 
 
-* System dependencies
+AS INVITEE
+Invites status
+pick dish link 
+show dish assignment 
 
-* Configuration
+(Less important) Permissions on user/host/guest actions
+Work with Hedi on Facebook integration (Maybe add profile pics?) 
 
-* Database creation
+Jessie
+Be able to update dinner dish assignment as guest 
+Work with Food 2 Fork 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Tracy
+Be able to update guest list 
+Be able to edit/update dinner (fix the edit controller action for dinners and this should work.)
+Work on the views for each. 
+Root 
+Channel login verbiage to “sign up or login” 
+API Things. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Thursday 
+Write three tests
+Add bootstrap theme
