@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :dinners do
     resources :menu_items, except: [:edit, :update, :show]
     resources :invitations
+    resources :dish_assignments, except: [:edit, :update, :show]
   end
 
   resources :users

@@ -1,0 +1,19 @@
+<%= form_for [@dinner, @dish_assignment] do |f| %>
+  <ul>
+  <% @menu_items_by_course.each do |course_array| %>
+    <% if course_array.any? %>
+      <h2><%= course_array.first.dish.course %></h2>
+        <% course_array.each do |menu_item| %>
+        <% if @dish_assignments.include?(menu_item.id) %>
+        <li><%= menu_item.name %> -- <%= menu_item.dish_assignment.guest.name %></li>
+        <% else %>  
+          <li>
+          <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>"> 
+          <%= f.label menu_item.name %></li>
+         <% end %>
+        <% end %>
+    <% end %>
+  <% end %>
+  </ul>
+  <%= f.submit "Pick Your Dishes" %>
+<% end %>

@@ -16,5 +16,8 @@ class Dinner < ActiveRecord::Base
   has_many :dish_assignments, through: :menu_items
 
   # upon creation, invite self(host) and mark attending, create guest
+  def current_menu_items
+    menu_items.map {|menu_item| menu_item.id if menu_item.dish_assignment}.compact
+  end
 
 end
