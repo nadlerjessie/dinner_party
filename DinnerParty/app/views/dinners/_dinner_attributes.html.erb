@@ -1,3 +1,3 @@
 <h2><%= @dinner.title %></h2>
-<p><%= @dinner.date.strftime("%B %d, %Y at %l:%M") %></p>
-<p><%= @dinner.host.name if @dinner.host %></p>
+<p>When: <%= @dinner.date.strftime("%B %d, %Y at %l:%M %P") %></p>
+<p>Host: <%= @dinner.host.name if @dinner.host %></p>
