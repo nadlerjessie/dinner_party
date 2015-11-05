@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @user = User.create_with_omniauth(auth_hash)
       session[:user_id] = @user.id
     end
-    redirect_to root_url
+    redirect_to @user
   end
 
   def destroy
