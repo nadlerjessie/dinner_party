@@ -1,14 +1,17 @@
-<%= render 'dinners/dinner_attributes' %>
+<div class="pad-20-left">
+  <%= render 'dinners/dinner_attributes' %>
 
-<h3>Invite Guests</h3>
- 
-<% if @available_users.empty? %>
-  <%= "No more users to invite :(" %>
-<% else %>
-  <%= render 'form' %>
-<% end %>
+  <h3>Invite Guests</h3>
+   
+  <% if @available_users.empty? %>
+    <%= "No more users to invite :(" %>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
+  <br>
 
- 
-<p>
-<%= link_to "Back", @dinner %>
-</p>
+   
+  <p>
+  <%= link_to "Back", @dinner %>
+  </p>
+</div>

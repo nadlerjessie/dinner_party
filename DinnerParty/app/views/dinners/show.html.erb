@@ -1,14 +1,16 @@
-<%= render 'dinners/dinner_attributes' %>
+<div class="pad-20-left">
+  <%= render 'dinners/dinner_attributes' %>
 
 
-<h2>Menu</h2>
-<%= link_to "See or Create Menu", dinner_menu_items_path(@dinner) %>
-<%= link_to "Choose What You're Bringing" , new_dinner_dish_assignment_path(@dinner) %>
+  <h3>Menu</h3>
+  <%= link_to "See or Create Menu", dinner_menu_items_path(@dinner) %> | 
+  <%= link_to "Choose What You're Bringing" , new_dinner_dish_assignment_path(@dinner) %>
 
-<h2>Guests</h2>
-<ul>
-<% @dinner.guests.each do |guest| %>
-  <li><%= image_tag(guest.user.profile_picture) if guest.user.profile_picture %><%= guest.name %><%= " | Host" if guest.user_id == @dinner.host.user_id %></li>
-<% end %> 
-</ul>
-<%= link_to "Invite Guests",  new_dinner_invitation_path(@dinner) %>
+  <h3>Guests</h3>
+  <ul>
+  <% @dinner.guests.each do |guest| %>
+    <li><%= image_tag(guest.user.profile_picture, :class=>'img-circle margin-10-right') if guest.user.profile_picture %><%= guest.name %><%= " | Host" if guest.user_id == @dinner.host.user_id %></li>
+  <% end %> 
+  </ul>
+  <%= link_to "Invite Guests",  new_dinner_invitation_path(@dinner) %>
+</div>
