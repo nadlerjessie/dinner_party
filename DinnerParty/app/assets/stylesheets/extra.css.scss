@@ -1,6 +1,17 @@
+body {
+  background-image: url('confectionary.png');
+  background-repeat: repeat-x repeat-y;
+}
+
 .jumbotron{
   background-image: image-url('summer-party');
+  background-repeat: no-repeat;
+  background-size: 100%;
   -webkit-filter: grayscale(40%);
+  color: white;
+  text-shadow: 2px 2px #000;
+  text-align: center;
+  padding: 100px 0px;
 }
 
 .pad-20-left{
@@ -29,4 +40,23 @@
 
 footer{
   height:100px;
+}
+
+.navbar{
+  margin-bottom:0px;
+    background-image: url('confectionary.png');
+  background-repeat: repeat-x repeat-y;
+}
+
+h2, .h2 {
+  text-align:center;
+}
+
+p {
+  text-align:center;
+}
+
+.btn-lg {
+  padding: 15px 20px;
+  margin: 50px;
 }
