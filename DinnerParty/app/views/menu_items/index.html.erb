@@ -1,9 +1,11 @@
+<div class="pad-20-left">
 <h1>Your Menu</h1>
-<%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %>
+<%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %> | <%= link_to "Back", dinner_path(@dinner)%>
 <% @menu_items_by_course.each do |menu_item_by_course| %>
   <ul>
     <p>
     <% if menu_item_by_course.any? %>
+      <div class="float-left-medium-padding">
       <h2><%= menu_item_by_course.first.dish.course %></h2>
         <% menu_item_by_course.each do |menu_item| %>
           <li>
@@ -11,8 +13,9 @@
             <%= link_to "Remove Item", dinner_menu_item_path(@dinner, menu_item), method: :delete %>
           </li>
         <% end %>
+      </div>
     <% end %>
     </p>
   </ul>
 <% end %>
-<%= link_to "Back", dinner_path(@dinner)%>
+</div>

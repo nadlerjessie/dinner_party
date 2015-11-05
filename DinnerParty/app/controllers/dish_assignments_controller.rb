@@ -13,7 +13,7 @@ class DishAssignmentsController < ApplicationController
     @assignments = params[:dish_assignment][:menu_item_ids]
     @assignments.each do |assignment|
       DishAssignment.create(guest_id: @guest.id, menu_item_id: assignment)
-      @guest.invitations.where(dinner_id: params[:dinner_id]).status = "Attending"
+      @guest.invitations.where(dinner_id: params[:dinner_id]).first.status = "Attending"
     end
     @user = current_user
     redirect_to @user

@@ -1,12 +1,17 @@
+<div class="pad-20-left">
+  <%= link_to "Back To Your Menu", dinner_menu_items_path(@dinner)%>
+</div>
+<div class="pad-20-left">
 <%= form_for [@dinner, @menu_item] do |f| %>
   <% if @menu_ids.blank? %>
-    <h1>Choose your menu!</h1>
+    <h1>New Menu</h1>   
+    <%= f.submit "Create Menu"%> 
     <%= render "new" %>
-    <%= f.submit "Create Menu"%>
   <% else %>
-    <h1>Add Items to Your Menu!</h1>
+    <h1>Update Menu</h1>
+    <%= f.submit "Save"%>
     <%= render "new" %>
-    <%= f.submit "Save Menu"%>
   <% end %>
 <% end %>
-<%= link_to "Back To Your Menu", dinner_menu_items_path(@dinner)%>
+</div>
+

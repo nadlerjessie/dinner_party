@@ -18,6 +18,16 @@ body {
   padding-left:20px;
 }
 
+.float-left-extra-padding{
+  float:left;
+  margin-right:115px;
+}
+
+.float-left-medium-padding{
+  float:left;
+  margin-right:5%;
+}
+
 .float-left{
   float:left;
   margin-right:10px;
@@ -44,15 +54,11 @@ footer{
 
 .navbar{
   margin-bottom:0px;
-    background-image: url('confectionary.png');
-  background-repeat: repeat-x repeat-y;
+  background-color: rgb(44, 59, 69);
 }
 
-h2, .h2 {
-  text-align:center;
-}
 
-p {
+.center {
   text-align:center;
 }
 
@@ -60,3 +66,4 @@ p {
   padding: 15px 20px;
   margin: 50px;
 }
+

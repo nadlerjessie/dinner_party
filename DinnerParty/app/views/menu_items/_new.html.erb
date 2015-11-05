@@ -1,12 +1,15 @@
 <ul>
 <% @menu_items_by_course.each do |menu_item_by_course| %>
   <% if menu_item_by_course.any? %>
-    <h2><%= menu_item_by_course.first.course %></h2>
+    <div class="float-left-extra-padding">
+    <legend><%= menu_item_by_course.first.course %></legend>
       <% menu_item_by_course.each do |menu_item| %>
-        <li>
-        <input type="checkbox" name="menu_item[dish_ids][]" value="<%= menu_item.id%>"> 
-        <%= label_tag menu_item.name %></li>
-       <% end %>
+        <div class="checkbox">  
+          <input type="checkbox" name="menu_item[dish_ids][]" value="<%= menu_item.id%>"> 
+          <%= label_tag menu_item.name %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 </ul>
