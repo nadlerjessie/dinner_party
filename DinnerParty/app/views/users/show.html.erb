@@ -1,47 +1,52 @@
 <% view_object = UserViewObject.new(@user_show) %>
-<h1>
-  User Name: <%= @user_show.name %>
-</h1>
-<%= image_tag(@user_show.profile_picture) if @user_show.profile_picture%>
-
+<div class="pad-20-left">
+<h2>
+  Welcome, <%= @user_show.name %>!
+</h2>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag(@user_show.profile_picture, class:"float-left") if @user_show.profile_picture%>
+    <p>Here are your upcoming events. Don't forget to pick something to bring! </p>
+  </div>
+</div>
 
 <h2>Your Dinner Invitations</h2>
-  <ol>
+<div class="width-400">
     <% if @user_show.guest %>
       <% @user_show.guest.invitations.each do |invitation| %>
-       <% if view_object.future_event?(invitation.dinner) %>
-        <li>
-            Date: <%= view_object.formatted_date(invitation.dinner) %><br>
-            Title: <%= invitation.dinner.title %><br>
-            Status: <%=invitation.status%><br>           
-            You Are Bringing: <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
-            Need Recipe Ideas? Check These Out!<br>
-            <%recipes = view_object.find_recipes(invitation) %>
+        <% if view_object.future_event?(invitation.dinner) %>
+          <div>
+            <h3 class="dashed-border-bottom"><%= invitation.dinner.title %></h3>
+            <strong>When:</strong> <%= view_object.formatted_date(invitation.dinner) %><br>
+            <strong>Status:</strong> <%= invitation.status %><br>            
+            <strong>You Are Bringing:</strong> <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
+            <strong>Need Recipe Ideas? Check These Out!</strong>
+            <ul>
+            <% recipes = view_object.find_recipes(invitation) %>
             <% recipes.each do |recipe| %>
-              <%= link_to recipe[0], recipe[-1] %>
+              <li><%= link_to recipe[0], recipe[-1] %></li>
             <% end %><br>
-          <%= link_to "Choose What To Bring", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-          <%= link_to "Modify What You're Bringing", dinner_dish_assignments_path(invitation.dinner)  %>    
-        </li>
+          </ul>
+            <%= link_to "Choose What To Bring", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+            <%= link_to "Modify What You're Bringing", dinner_dish_assignments_path(invitation.dinner)  %>  
+          </div>
         <% end %>
       <% end %>
     <% end %>
-  </ol>
+</div>
 
 <h2>Dinners You Are Hosting</h2>
-  <ol>
+<div class="width-400">
     <% if @user_show.host %>
       <% @user_show.host.dinners.each do |dinner| %>
         <% if view_object.future_event?(dinner) %>
-          <li>Date: <%= view_object.formatted_date(dinner) %><br>
-              Title: <%= dinner.title %><br>
-              <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
+            <div>
+              <h3 class="dashed-border-bottom"><%= dinner.title %></h3>
+              <strong>When:</strong> <%= view_object.formatted_date(dinner) %><br>
+              <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %> |             <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %><br>
               <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
-              <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %>
-          </li> 
+          </div>               
         <% end %>
       <% end %>
     <% end %>
-  </ol>
-
-  <%= link_to "Create a New Dinner", new_dinner_path %>
+</div>
