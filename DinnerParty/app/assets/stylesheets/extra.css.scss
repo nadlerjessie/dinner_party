@@ -3,3 +3,26 @@
   -webkit-filter: grayscale(40%);
 }
 
+.pad-20-left{
+  padding-left:20px;
+}
+
+.float-left{
+  float:left;
+  margin-right:10px;
+}
+
+.dashed-border-bottom{
+  margin-bottom:3px;
+  padding-bottom:3px;
+  border-bottom-style: dotted;
+  border-width:1px;
+}
+
+.width-400{
+  width:400px;
+}
+
+footer{
+  height:100px;
+}
