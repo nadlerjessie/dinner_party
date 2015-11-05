@@ -1,11 +1,16 @@
+<!-- <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&close;</button>
+  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+</div> -->
+
+
+
 <%= form_for(@dinner) do |f| %>
   <% if @dinner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dinner.errors.count, "error") %> prohibited this dinner from being saved:</h2>
-
-      <ul>
-      <% @dinner.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+      <% @dinner.errors.full_messages.each do |msg| %>   
+        <strong><%= msg %></strong><br>
       <% end %>
       </ul>
     </div>
