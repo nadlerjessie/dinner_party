@@ -1,15 +1,16 @@
-<h2 class="pad-20-left">
+<div class="pad-20-left">
+<h2>
   Welcome, <%= @user_show.name %>!
 </h2>
-<div class="row pad-20-left">
+<div class="row">
   <div class="col-md-3">
     <%= image_tag(@user_show.profile_picture, class:"float-left") if @user_show.profile_picture%>
     <p>Here are your upcoming events. Don't forget to pick something to bring! </p>
   </div>
 </div>
 
-<h2 class="pad-20-left">Your Dinner Invitations</h2>
-<div class="pad-20-left width-400">
+<h2>Your Dinner Invitations</h2>
+<div class="width-400">
     <% if @user_show.guest %>
       <% @user_show.guest.invitations.each do |invitation| %>
       <div>
@@ -26,8 +27,8 @@
     <% end %>
 </div>
 
-<h2 class="pad-20-left">Dinners You Are Hosting</h2>
-<div class="pad-20-left width-400">
+<h2>Dinners You Are Hosting</h2>
+<div class="width-400">
     <% if @user_show.host %>
       <% @user_show.host.dinners.each do |dinner| %>
         <div>
