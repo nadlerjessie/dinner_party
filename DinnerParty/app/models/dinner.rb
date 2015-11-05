@@ -28,11 +28,7 @@ class Dinner < ActiveRecord::Base
     users.reject{|user| dinner_guest_user_ids.include?(user.id)}
   end
 
-  def formatted_date
-    self.date.strftime("%B %d, %Y at %l:%M%p")
-  end
-
-  def assigned_dishes_for_guest(guest)
+  def assigned_dishes_for_guest(guest) 
     guest_dish_assignments = dish_assignments.where(guest_id: guest.id)
     guest_dish_assignments.map do |dish_assignment|
       dish_assignment.menu_item.name

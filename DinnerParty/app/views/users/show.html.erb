@@ -9,15 +9,19 @@
   <ol>
     <% if @user_show.guest %>
       <% @user_show.guest.invitations.each do |invitation| %>
-       <% if view_object.future_event?(invitation) %>
+       <% if view_object.future_event?(invitation.dinner) %>
         <li>
-            Date: <%= invitation.dinner.formatted_date %><br>
+            Date: <%= view_object.formatted_date(invitation.dinner) %><br>
             Title: <%= invitation.dinner.title %><br>
             Status: <%=invitation.status%><br>           
-            Your Dishes: <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
-          <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-          <%= link_to "Modify Your Dishes", dinner_dish_assignments_path(invitation.dinner)  %>    
-
+            You Are Bringing: <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
+            Need Recipe Ideas? Check These Out!<br>
+            <%recipes = view_object.find_recipes(invitation) %>
+            <% recipes.each do |recipe| %>
+              <%= link_to recipe[0], recipe[-1] %>
+            <% end %><br>
+          <%= link_to "Choose What To Bring", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+          <%= link_to "Modify What You're Bringing", dinner_dish_assignments_path(invitation.dinner)  %>    
         </li>
         <% end %>
       <% end %>
@@ -28,12 +32,14 @@
   <ol>
     <% if @user_show.host %>
       <% @user_show.host.dinners.each do |dinner| %>
-        <li>Date: <%= dinner.formatted_date %><br>
-            Title: <%= dinner.title %><br>
-            <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
-            <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
-            <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %>
-        </li> 
+        <% if view_object.future_event?(dinner) %>
+          <li>Date: <%= view_object.formatted_date(dinner) %><br>
+              Title: <%= dinner.title %><br>
+              <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
+              <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
+              <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %>
+          </li> 
+        <% end %>
       <% end %>
     <% end %>
   </ol>
