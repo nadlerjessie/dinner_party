@@ -7,13 +7,7 @@
 #  host_id :integer
 #  title   :string
 #
-class DinnerValidator < ActiveModel::Validator
-  def validate(record)
-    if record.date < Time.now.tomorrow
-      record.errors[:base] << "Your dinner must be scheduled at least one day in advance"
-    end
-  end
-end
+
 class Dinner < ActiveRecord::Base
   belongs_to :host
   has_many :invitations, dependent: :destroy
@@ -22,7 +16,7 @@ class Dinner < ActiveRecord::Base
   has_many :dish_assignments, through: :menu_items
 
   validates_presence_of :title
-  validates_with DinnerValidator
+  validate :date_at_least_tomorrow
 
   # upon creation, invite self(host) and mark attending, create guest
   def taken_menu_items
@@ -43,5 +37,11 @@ class Dinner < ActiveRecord::Base
   end
 
   private
+
+  def date_at_least_tomorrow
+    if self.date < Time.now.tomorrow
+      self.errors[:base] << "Your dinner must be scheduled at least one day in advance"
+    end
+  end
 
 end
