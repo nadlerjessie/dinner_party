@@ -1,11 +1,15 @@
-
-<h1>All The Dinners</h1>
-
-<ul>
-<% @dinners.each do |dinner| %>
-  <li><%= dinner.title %></li>
-<% end %>
-</ul>
-
-
-<button type="Host a Dinner">Create a New Dinner!</button>
+<div class="jumbotron tinted">
+  <h1>Host a Dinner Party</h1>
+  <p><strong>Take the hassle out of planning a dinner party with friends.</strong></p>
+  <p><a class="btn btn-primary btn-lg" href="<%= login_path %>">Sign up or Log In</a></p>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-2">
+    <h2>Host a Dinner Party</h2>
+    <p>Create a menu, invite your guests, and host your classiest soiree yet.</p>
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+    <h2>Involve Your Guests</h2>
+    <p>Let your guests choose what they'll bring to your party&#8212;without doubling up on dishes!</p>
+  </div>
+</div>
