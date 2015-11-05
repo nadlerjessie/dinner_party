@@ -33,17 +33,10 @@ class Dinner < ActiveRecord::Base
   end
 
   def assigned_dishes_for_guest(guest)
-    dish_assignments_for_guest = DishAssignment.where(guest_id: guest.id)
-    menu_item_ids = menu_items.map(&:id)
-
-    dish_assignments_for_guest_for_dinner = dish_assignments_for_guest.select do |dish_assignment|
-      menu_item_ids.include?(dish_assignment.menu_item_id)
-    end
-
-    dish_assignments_for_guest_for_dinner.map do |dish_assignment|
-      dish_assignment.menu_item.dish.name
-    end.join(", ")
-    
+    guest_dish_assignments = dish_assignments.where(guest_id: guest.id)
+    guest_dish_assignments.map do |dish_assignment|
+      dish_assignment.menu_item.name
+    end.join(", ")   
   end
 
 end

@@ -1,20 +1,20 @@
 <h1>
-  User Name: <%= @user.name %>
+  User Name: <%= @user_show.name %>
 </h1>
-<%= image_tag(@user.profile_picture) if @user.profile_picture%>
+<%= image_tag(@user_show.profile_picture) if @user_show.profile_picture%>
 
 <h2>Your Dinner Invitations</h2>
   <ol>
-    <% if @user.guest %>
-      <% @user.guest.invitations.each do |invitation| %>
+    <% if @user_show.guest %>
+      <% @user_show.guest.invitations.each do |invitation| %>
         <li>Date: <%= invitation.dinner.formatted_date %><br>
             Title: <%= invitation.dinner.title %><br>
             Status: <%= invitation.status %><br>
             
-            Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user.guest) %><br>
+            Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
 
             <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-            <%= link_to "Modify Your Dishes", edit_dinner_dish_assignment_path(invitation.dinner, @dish_assignment)  %>
+            <%= link_to "Modify Your Dishes", dinner_dish_assignments_path(invitation.dinner)  %>
         </li>
       <% end %>
     <% end %>
@@ -22,8 +22,8 @@
 
 <h2>Dinners You Are Hosting</h2>
   <ol>
-    <% if @user.host %>
-      <% @user.host.dinners.each do |dinner| %>
+    <% if @user_show.host %>
+      <% @user_show.host.dinners.each do |dinner| %>
         <li>Date: <%= dinner.formatted_date %><br>
             Title: <%= dinner.title %><br>
             <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>

@@ -1,0 +1,20 @@
+<%= form_tag dinner_dish_assignments_path(@dinner) do %>
+  <ul>
+  <h2>You signed up to bring:</h2>
+  <% @my_items.each do |my_item| %>
+    <li><%= label_tag my_item.menu_item.name %>
+    <%= link_to "Remove Item", "/dinners/#{@dinner.id}/dish_assignments/#{my_item.id}", method: :delete %></li>
+  <% end %>
+  </ul>
+
+  <ul>
+  <h2>These dishes are still available:</h2>
+  <% @available_menu_items.each do |available_menu_item| %>
+    <li><%= label_tag available_menu_item.name %>
+    <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= available_menu_item.id%>"></li>
+  <% end %>
+  </ul>
+  <%= submit_tag "Update Your Dishes" %>
+<% end %>
+<!-- check_box_tag dish_assignment, my_item.id, checked: true%> -->
+<!-- check_box_tag available_menu_item.id, available_menu_item.name %> -->

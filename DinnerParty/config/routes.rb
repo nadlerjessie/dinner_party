@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :dish_assignments, except: :show
   end
 
-  resources :users
+  resources :users, only: [:show, :index]
   resources :guests 
   resources :hosts
 end

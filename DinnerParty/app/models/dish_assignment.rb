@@ -11,7 +11,8 @@ class DishAssignment < ActiveRecord::Base
   belongs_to :guest
   belongs_to :menu_item
 
-  def self.find_items
-    self.where(guest_id: current_user.guest.id)
+  def name
+    menu_item.name 
   end
+
 end
