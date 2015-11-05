@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
       user.provider = auth_hash["provider"]
       user.uid = auth_hash["uid"]
       user.name = auth_hash["info"]["name"]
+      user.profile_picture = auth_hash["info"]["image"]
     end
   end
 
