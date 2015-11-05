@@ -4,7 +4,7 @@ class MenuItemsController < ApplicationController
   def new
     @menu_item = MenuItem.new
     @menu_ids = MenuItem.existing_menu_ids(@dinner.id) || []
-    @all_dishes = Dish.find_available_dishes(@dinner.id, @menu_ids)
+    @menu_items_by_course = Dish.find_available_dishes(@dinner.id, @menu_ids)
   end
 
   def create
@@ -20,7 +20,7 @@ class MenuItemsController < ApplicationController
   end
 
   def index
-    @all_dishes = MenuItem.index_by_course(@dinner.id)
+    @menu_items_by_course = MenuItem.index_by_course(@dinner.id)
   end
 
   def destroy
@@ -35,6 +35,4 @@ class MenuItemsController < ApplicationController
   def set_dinner
     @dinner = Dinner.find(params[:dinner_id])
   end
-
-
 end

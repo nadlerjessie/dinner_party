@@ -11,7 +11,11 @@ class DinnersController < ApplicationController
     @dinner.host = @host 
     @dinner.save
     @host.add_to_attendees(@dinner)
-    redirect_to @dinner
+    if @dinner.persisted?
+      redirect_to @dinner
+    else
+      render "new"
+    end
   end
 
   def edit

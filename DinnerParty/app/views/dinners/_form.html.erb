@@ -1,4 +1,15 @@
 <%= form_for(@dinner) do |f| %>
+  <% if @dinner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dinner.errors.count, "error") %> prohibited this dinner from being saved:</h2>
+
+      <ul>
+      <% @dinner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   <%= f.label :date %><br>

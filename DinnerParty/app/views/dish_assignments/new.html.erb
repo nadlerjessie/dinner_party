@@ -5,17 +5,17 @@
   <% @menu_items_by_course.each do |course_array| %>
     <% if course_array.any? %>
       <h2><%= course_array.first.dish.course %></h2>
-        <% course_array.each do |menu_item| %>
-        <% if @dishes_assigned.include?(menu_item.id) %>
-        <li><%= menu_item.name %> -- <%= view_object.guest_bringing_dish(menu_item) if menu_item.dish_assignment.guest %></li>
-        <% else %>  
-          <li>
-          <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>">
-          <%= f.label menu_item.name %><br>
-         <% end %>
-         Consider this recipe:
-          <%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></li>
-        <% end %>
+      <% course_array.each do |menu_item| %>
+      <% if @dishes_assigned.include?(menu_item.id) %>
+        <li><%= view_object.guest_bringing_dish(menu_item) if menu_item.dish_assignment.guest %></li>
+      <% else %>  
+        <li>
+        <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>">
+        <%= f.label menu_item.name %><br>
+      <% end %>
+      Consider this recipe:
+      <%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></li>
+      <% end %>
     <% end %>
   <% end %>
   </ul>

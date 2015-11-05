@@ -1,14 +1,14 @@
 <h1>Your Menu</h1>
 <%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %>
-<% @all_dishes.each do |dish_type| %>
+<% @menu_items_by_course.each do |menu_item_by_course| %>
   <ul>
     <p>
-    <% if dish_type.any? %>
-      <h2><%= dish_type.first.dish.course %></h2>
-        <% dish_type.each do |type| %>
+    <% if menu_item_by_course.any? %>
+      <h2><%= menu_item_by_course.first.dish.course %></h2>
+        <% menu_item_by_course.each do |menu_item| %>
           <li>
-            <%= type.dish.name %>
-            <%= link_to "Remove Item", "/dinners/#{params[:dinner_id]}/menu_items/#{type.id}", method: :delete %>
+            <%= menu_item.dish.name %>
+            <%= link_to "Remove Item", dinner_menu_item_path(@dinner, menu_item), method: :delete %>
           </li>
         <% end %>
     <% end %>

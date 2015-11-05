@@ -18,5 +18,5 @@ class Dish < ActiveRecord::Base
       Dish.select("dishes.*").where(course: course).where.not(id: menu_ids)
     end
   end
-
+  
 end
