@@ -1,21 +1,25 @@
+<% view_object = UserViewObject.new(@user_show) %>
 <h1>
   User Name: <%= @user_show.name %>
 </h1>
 <%= image_tag(@user_show.profile_picture) if @user_show.profile_picture%>
 
+
 <h2>Your Dinner Invitations</h2>
   <ol>
     <% if @user_show.guest %>
       <% @user_show.guest.invitations.each do |invitation| %>
-        <li>Date: <%= invitation.dinner.formatted_date %><br>
+       <% if view_object.future_event?(invitation) %>
+        <li>
+            Date: <%= invitation.dinner.formatted_date %><br>
             Title: <%= invitation.dinner.title %><br>
-            Status: <%= invitation.status %><br>
-            
-            Your Dishes: <%= invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
+            Status: <%=invitation.status%><br>           
+            Your Dishes: <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
+          <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+          <%= link_to "Modify Your Dishes", dinner_dish_assignments_path(invitation.dinner)  %>    
 
-            <%= link_to "Choose a New Dish", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-            <%= link_to "Modify Your Dishes", dinner_dish_assignments_path(invitation.dinner)  %>
         </li>
+        <% end %>
       <% end %>
     <% end %>
   </ol>
