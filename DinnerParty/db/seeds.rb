@@ -58,18 +58,20 @@ end
 # end
 
 def make_dishes
-  Dish.create(name: "Lasagna", course: "Main Dish")
-  Dish.create(name: "Chicken", course: "Main Dish")
-  Dish.create(name: "Brisket", course: "Main Dish")
-  Dish.create(name: "Pot Pie", course: "Main Dish")
-  Dish.create(name: "Pulled Pork", course: "Main Dish")
-  Dish.create(name: "Green Salad", course: "Salad")
-  Dish.create(name: "Pasta Salad", course: "Salad")
-  Dish.create(name: "Salsa", course: "Appetizer")
-  Dish.create(name: "Hummus", course: "Appetizer")
-  Dish.create(name: "Spinach Dip", course: "Appetizer")
-  Dish.create(name: "Brownies", course: "Dessert")
-  Dish.create(name: "Chocolate Chip Cookies", course: "Dessert")
+  Dish.create(name: "Lasagna", course: "Main Dishes")
+  Dish.create(name: "Chicken", course: "Main Dishes")
+  Dish.create(name: "Brisket", course: "Main Dishes")
+  Dish.create(name: "Pot Pie", course: "Main Dishes")
+  Dish.create(name: "Pulled Pork", course: "Main Dishes")
+  Dish.create(name: "Green Salad", course: "Salads")
+  Dish.create(name: "Pasta Salad", course: "Salads")
+  Dish.create(name: "Salsa", course: "Appetizers")
+  Dish.create(name: "Hummus", course: "Appetizers")
+  Dish.create(name: "Spinach Dip", course: "Appetizers")
+  Dish.create(name: "Brownies", course: "Desserts")
+  Dish.create(name: "Chocolate Chip Cookies", course: "Desserts")
+  Dish.create(name: "Lemon Water", course: "Beverages")
+  Dish.create(name: "Soda", course: "Beverages")
 end
 
 # def make_invitations

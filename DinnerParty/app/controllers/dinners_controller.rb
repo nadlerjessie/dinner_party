@@ -9,9 +9,8 @@ class DinnersController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     @host = Host.find_or_create_by(user_id: @user.id)
     @dinner.host = @host 
-    @dinner.save
-    @host.add_to_attendees(@dinner)
-    if @dinner.persisted?
+    if @dinner.save
+      @host.add_to_attendees(@dinner)
       redirect_to @dinner
     else
       render "new"
@@ -24,8 +23,11 @@ class DinnersController < ApplicationController
 
   def update
     @dinner = Dinner.find(params[:id])
-    @dinner.update(dinner_params)
-    redirect_to @dinner
+    if @dinner.update(dinner_params)
+      redirect_to @dinner
+    else
+      render "edit"
+    end
   end
 
   def index
