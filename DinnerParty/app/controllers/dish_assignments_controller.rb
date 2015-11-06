@@ -10,10 +10,12 @@ class DishAssignmentsController < ApplicationController
 
   def create
     @guest = Guest.find_by(user_id: current_user.id) 
-    @assignments = params[:dish_assignment][:menu_item_ids]
-    @assignments.each do |assignment|
-      DishAssignment.create(guest_id: @guest.id, menu_item_id: assignment)
-      @guest.invitations.where(dinner_id: params[:dinner_id]).first.status = "Attending"
+    if params[:dish_assignment]
+      @assignments = params[:dish_assignment][:menu_item_ids]
+      @assignments.each do |assignment|
+        DishAssignment.create(guest_id: @guest.id, menu_item_id: assignment)
+        @guest.invitations.where(dinner_id: params[:dinner_id]).first.status = "Attending"
+      end
     end
     @user = current_user
     redirect_to @user
@@ -22,7 +24,7 @@ class DishAssignmentsController < ApplicationController
   def index
     @menu_items_by_course = MenuItem.index_by_course(@dinner.id)
     @guest = Guest.find_by(user_id: current_user.id)
-    @my_items = @guest.dish_assignments
+    @my_items = @dinner.dish_assignments.where(guest_id: @guest.id)
     @dishes_assigned = @dinner.taken_menu_items
     @available_menu_items = MenuItem.find(@menu_items_by_course.flatten(1).map(&:id) - @dishes_assigned)
   end
