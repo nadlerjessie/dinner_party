@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
     @dinner = Dinner.find(params[:dinner_id])
   end
 
+
 private
 
   def invitation_params

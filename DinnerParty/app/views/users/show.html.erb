@@ -19,7 +19,7 @@
           <div>
             <h4 class="dashed-border-bottom"><%= invitation.dinner.title %></h4>
             <strong>When:</strong> <%= view_object.formatted_date(invitation.dinner) %><br>
-            <strong>Status:</strong> <%= invitation.status %><br>            
+            <strong>Status:</strong> <%= invitation.status %>          
             <strong>You Are Bringing:</strong> <%=invitation.dinner.assigned_dishes_for_guest(@user_show.guest) %><br>
             <strong>Need Recipe Ideas? Check These Out!</strong>
             <ul>

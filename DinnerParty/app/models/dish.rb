@@ -11,7 +11,7 @@ class Dish < ActiveRecord::Base
   has_many :menu_items
   has_many :dish_assignments, through: :menu_items
 
-  COURSES = ["Main Dishes", "Salads", "Appetizers", "Desserts", "Beverages"]
+  COURSES = ["Main Dishes", "Sides", "Appetizers", "Desserts", "Beverages"]
 
   def self.find_available_dishes(dinner_id, menu_ids)
     COURSES.map do |course|

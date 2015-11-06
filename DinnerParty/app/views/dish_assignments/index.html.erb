@@ -4,7 +4,7 @@
   <h2>You signed up to bring:</h2>
   <% @my_items.each do |my_item| %>
     <li><%= label_tag my_item.menu_item.name %>
-    <%= link_to "Remove Item", "/dinners/#{@dinner.id}/dish_assignments/#{my_item.id}", method: :delete %></li>
+    <%= link_to "X", "/dinners/#{@dinner.id}/dish_assignments/#{my_item.id}", method: :delete %></li>
   <% end %>
   </ul>
 
@@ -15,6 +15,6 @@
     <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= available_menu_item.id%>"></li>
   <% end %>
   </ul>
-  <%= submit_tag "Save" %>
+  <%= submit_tag "Bring it" %>
 <% end %>
 </div>
