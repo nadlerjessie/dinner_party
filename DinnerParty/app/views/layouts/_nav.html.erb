@@ -9,16 +9,16 @@
       </button>
 
       <% if logged_in %>
-        <a class="navbar-brand" href="<%= user_path(current_user) %>">Dinner Party</a>
+        <a class="navbar-brand" href="<%= user_path(current_user) %>"><%= image_tag('bringit-logo', :class => "brand logo-img") %></a>
       <% else %>
-        <a class="navbar-brand" href="#">Dinner Party</a>
+        <a class="navbar-brand" href="#"><%= image_tag('bringit-logo', :class => "brand logo-img") %></a>
       <% end %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if logged_in %>
-        <li><%= link_to "Create a Dinner", new_dinner_path %></li>
+        <li><%= link_to "Host a Dinner", new_dinner_path %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
