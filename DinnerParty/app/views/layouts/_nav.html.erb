@@ -9,9 +9,9 @@
       </button>
 
       <% if logged_in %>
-        <a class="navbar-brand" href="<%= user_path(current_user) %>">Dinner Party</a>
+        <a class="navbar-brand" href="<%= user_path(current_user) %>"><%= image_tag('bringit-logo', :class => "brand logo-img") %></a>
       <% else %>
-        <a class="navbar-brand" href="#">Dinner Party</a>
+        <a class="navbar-brand" href="#"><%= image_tag('bringit-logo', :class => "brand logo-img") %></a>
       <% end %>
     </div>
 
