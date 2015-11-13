@@ -1,5 +1,4 @@
-# dinner_party
-== Bring It
+# Bring It
 
 Having trouble organizing a dinner party or potluck? Our app helps with the invitations, menu planning, and organizing who is bringing what. 
 
@@ -20,3 +19,6 @@ Bring it allows you to host and/or attend dinner parties.
 -Every guest can see their host's menu and choose what they'd like to bring. 
 -Once something is taken off the menu it won't be available for future guests, so the host doesn't need to worry about having everyone bring the same thing!
 -Recipe recommendations are provided based on menu selections. This is done through the Food2Fork API.
+
+== Contributors
+Tracy Lum, Hedi Essid, Dan Berenholtz, Jessie Nadler
