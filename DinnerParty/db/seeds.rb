@@ -20,7 +20,7 @@ MenuItem.destroy_all
 
 def make_seeds
   make_dishes
-  make_users
+  # make_users
   # make_guests
   # make_hosts
   # make_dinners
@@ -28,12 +28,12 @@ def make_seeds
   # make_dish_assignments
 end
 
-def make_users
-  User.create(name: "Tracy 1")
-  User.create(name: "Jessie")
-  User.create(name: "Hedi")
-  User.create(name: "Dan")
-end
+# def make_users
+#   User.create(name: "Tracy 1")
+#   User.create(name: "Jessie")
+#   User.create(name: "Hedi")
+#   User.create(name: "Dan")
+# end
 
 
 # def make_hosts
