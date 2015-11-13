@@ -32,6 +32,7 @@ gem 'annotate'
 gem 'launchy'
 gem 'httparty'
 gem 'recursive-open-struct'
+gem 'cancan'
 
 gem 'therubyracer'
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
