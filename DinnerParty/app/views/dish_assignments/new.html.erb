@@ -23,7 +23,7 @@
           <td class="col-md-3"><%= f.label menu_item.name %></td>
           <td class="col-md-2"></td>
         <% end %>
-          <td><%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></td>
+          <td><%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url, :target => "_blank" %></td>
         </tr>
         <% end %>        
       </table>

@@ -40,7 +40,7 @@
                 <td>
                     <% recipes = view_object.find_recipes(invitation) %>
                     <% recipes.each do |recipe| %>
-                      <%= link_to recipe[0], recipe[-1] %><br>
+                      <%= link_to recipe[0], recipe[-1], :target => "_blank" %><br>
                     <% end %>
                 </td>
               </tr>
