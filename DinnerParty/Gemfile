@@ -35,6 +35,7 @@ gem 'recursive-open-struct'
 gem 'cancan'
 gem 'puma'
 
+
 gem 'therubyracer'
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 
@@ -62,4 +63,5 @@ group :development do
 end
 
 
-
+gem 'rails_12factor', group: :production
+ruby "2.2.2"
