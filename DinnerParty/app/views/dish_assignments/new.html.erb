@@ -4,21 +4,31 @@
   <ul>
   <% @menu_items_by_course.each do |course_array| %>
     <% if course_array.any? %>
-      <h2><%= course_array.first.dish.course %></h2>
+     <h2><%= course_array.first.dish.course %></h2>
+      <table class="table table-condensed">
+        <tr>
+          <td></td>
+          <td></td>
+          <td><strong>Who's Bringing It</strong></td>
+          <td><strong>Consider this recipe:</strong></td>
+        </tr>         
       <% course_array.each do |menu_item| %>
-      <% if @dishes_assigned.include?(menu_item.id) %>
-        <li><%= view_object.guest_bringing_dish(menu_item) if menu_item.dish_assignment.guest %></li>
-      <% else %>  
-        <li>
-        <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>">
-        <%= f.label menu_item.name %><br>
-      <% end %>
-      Consider this recipe:
-      <%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></li>
-      <% end %>
+        <% if @dishes_assigned.include?(menu_item.id) %>
+        <tr>
+          <td class="col-md-1"></td>
+          <td class="col-md-3"><%= f.label menu_item.name %></td>
+          <td class="col-md-2"><%= view_object.guest_bringing_dish(menu_item) if menu_item.dish_assignment.guest %></td>
+          <% else %>
+          <td class="col-md-1"> <input type="checkbox" name="dish_assignment[menu_item_ids][]" value="<%= menu_item.id%>"></td>
+          <td class="col-md-3"><%= f.label menu_item.name %></td>
+          <td class="col-md-2"></td>
+        <% end %>
+          <td><%= link_to "#{menu_item.recipe_title}", menu_item.recipe_url%></td>
+        </tr>
+        <% end %>        
+      </table>
     <% end %>
   <% end %>
-  </ul>
   <%= f.submit "Bring it", :class => "btn btn-default" %>
 <% end %>
 </div>
