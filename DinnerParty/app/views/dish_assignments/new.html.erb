@@ -1,5 +1,5 @@
 <% view_object = DishAssignmentViewObject.new %>
-<div class = "pad-20-left">
+<div class = "container">
 <%= form_for [@dinner, @dish_assignment] do |f| %>
   <ul>
   <% @menu_items_by_course.each do |course_array| %>
@@ -19,6 +19,6 @@
     <% end %>
   <% end %>
   </ul>
-  <%= f.submit "Bring it" %>
+  <%= f.submit "Bring it", :class => "btn btn-default" %>
 <% end %>
 </div>

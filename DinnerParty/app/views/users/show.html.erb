@@ -2,7 +2,8 @@
 <div class="container-fluid">
 
 <div class="row">
-  <div class="col-md-4 col-md-offset-1">
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
     <h2>Welcome, <%= current_user.name %>!</h2>
     <%= image_tag(current_user.profile_picture, class:"float-left img-circle") if current_user.profile_picture%>
     <p>Here are your upcoming events. Don't forget to pick something to bring! </p>
@@ -11,42 +12,76 @@
 </div>
 
 <div class="row">
-<div class="col-md-4 col-md-offset-1">
+<div class="col-md-1"></div>
+<div class="col-md-4">
   <h3>Your Dinner Invitations</h3><br>
     <% if current_user.guest %>
       <% current_user.guest.invitations.each do |invitation| %>
         <% if view_object.future_event?(invitation.dinner) %>
           <div>
-            <h4 class="dashed-border-bottom"><%= invitation.dinner.title %></h4>
-            <strong>When:</strong> <%= view_object.formatted_date(invitation.dinner) %><br>
-            <strong>Status:</strong> <%= invitation.status %>          
-            <strong>You Are Bringing:</strong> <%=invitation.dinner.assigned_dishes_for_guest(current_user.guest) %><br>
-            <strong>Need Recipe Ideas? Check These Out!</strong>
-            <ul>
-            <% recipes = view_object.find_recipes(invitation) %>
-            <% recipes.each do |recipe| %>
-              <li><%= link_to recipe[0], recipe[-1] %></li>
-            <% end %><br>
-          </ul>
-            <%= link_to "Choose What To Bring", new_dinner_dish_assignment_path(invitation.dinner) %><br>
-            <%= link_to "Modify What You're Bringing", dinner_dish_assignments_path(invitation.dinner)  %>  
-          </div><br><br>
+            <table class="table table-condensed">
+              <tr>
+                <td colspan="2"><h4><%= invitation.dinner.title %></h4></td>
+              </tr>
+              <tr>
+                <td class="col-md-4"><strong>When:</strong></td>
+                <td><%= view_object.formatted_date(invitation.dinner) %></td>
+              </tr>
+              <tr>
+                <td class="col-md-4"><strong>Status:</strong></td>
+                <td><%= invitation.status %></td>
+              </tr>
+              <tr>
+                <td class="col-md-4"><strong>You Are Bringing:</strong></td>
+                <td><%=invitation.dinner.assigned_dishes_for_guest(current_user.guest) %></td>
+              </tr>
+              <tr>
+                <td class="col-md-4"><strong>Need Recipe Ideas? Check These Out!</strong></td>
+                <td>
+                    <% recipes = view_object.find_recipes(invitation) %>
+                    <% recipes.each do |recipe| %>
+                      <%= link_to recipe[0], recipe[-1] %><br>
+                    <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Bring It!</strong></td>
+                <td><%= link_to "Choose What To Bring", new_dinner_dish_assignment_path(invitation.dinner) %><br>
+                  <%= link_to "Modify What You're Bringing", dinner_dish_assignments_path(invitation.dinner)  %> </td>
+              </tr>
+            </table>
+          </div>
         <% end %>
       <% end %>
     <% end %>
 </div>
 
-
-<div class="col-md-4 col-md-offset-1">
+<div class="col-md-1"></div>
+<div class="col-md-4">
   <h3>Dinners You Are Hosting</h3><br>
     <% if current_user.host %>
       <% current_user.host.dinners.each do |dinner| %>
         <% if view_object.future_event?(dinner) %>
             <div>
-              <h4 class="dashed-border-bottom"><%= dinner.title %></h4>
-              <strong>When:</strong> <%= view_object.formatted_date(dinner) %><br>
-              <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %> |             <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %><br>
-              <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %><br>
+              <table class="table table-condensed">
+                <tr>
+                  <td colspan="2"><h4><%= dinner.title %></h4></td>
+                </tr>
+                <tr>
+                  <td class="col-md-4"><strong>When:</strong></td>
+                  <td><%= view_object.formatted_date(dinner) %></td>
+                </tr>
+                <tr>
+                  <td class="col-md-4"><strong>Manage Event:</strong></td>
+                  <td>
+                    <%= link_to "Edit Title and Date", edit_dinner_path(dinner) %><br>
+                    <%= link_to "Cancel Dinner", "/dinners/#{dinner.id}", method: :delete %><br>
+                    <%= link_to "View Menu and Guests", "/dinners/#{dinner.id}" %>
+                  </td>
+                </tr>
+              </table>
+
+              <br>
           </div>               
         <% end %>
       <% end %>

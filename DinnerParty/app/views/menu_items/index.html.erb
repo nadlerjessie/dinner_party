@@ -1,4 +1,4 @@
-<div class="pad-20-left">
+<div class="container">
 <h1>Your Menu</h1>
 <%= link_to "Add Items", new_dinner_menu_item_path(@dinner) %> | <%= link_to "Back", dinner_path(@dinner)%>
 <% @menu_items_by_course.each do |menu_item_by_course| %>
