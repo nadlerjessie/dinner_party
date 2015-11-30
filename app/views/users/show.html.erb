@@ -24,12 +24,12 @@
                 <td colspan="2"><h4><%= invitation.dinner.title %></h4></td>
               </tr>
               <tr>
-                <td class="col-md-4"><strong>When:</strong></td>
-                <td><%= view_object.formatted_date(invitation.dinner) %></td>
+                <td class="col-md-4"><strong>Hosted By:</strong></td>
+                <td><%= view_object.host(invitation) %></td>
               </tr>
               <tr>
-                <td class="col-md-4"><strong>Status:</strong></td>
-                <td><%= invitation.status %></td>
+                <td class="col-md-4"><strong>When:</strong></td>
+                <td><%= view_object.formatted_date(invitation.dinner) %></td>
               </tr>
               <tr>
                 <td class="col-md-4"><strong>You Are Bringing:</strong></td>

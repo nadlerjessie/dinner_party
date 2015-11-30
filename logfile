@@ -1,0 +1,8 @@
+LOG:  database system was shut down at 2015-11-30 08:37:30 EST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+FATAL:  database "DinnerParty_development" does not exist
+FATAL:  database "DinnerParty_development" does not exist
+ERROR:  database "DinnerParty_test" already exists
+STATEMENT:  CREATE DATABASE "DinnerParty_test" ENCODING = 'unicode'
