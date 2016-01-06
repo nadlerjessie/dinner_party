@@ -22,5 +22,13 @@ class UserViewObject
     return_array
   end
 
+  def host(invitation)
+    if invitation.host.user_id == @user.id
+      "You"
+    else
+      invitation.host.name
+    end
+  end
+
 
 end

@@ -11,7 +11,7 @@
 Dish.destroy_all
 Host.destroy_all
 Dinner.destroy_all
-User.destroy_all
+# User.destroy_all
 Guest.destroy_all
 Invitation.destroy_all
 DishAssignment.destroy_all
